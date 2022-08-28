@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog Post{% endblock title %}
+
+
+{% block css %}
+body{
+}
+
+.my-cont{
+  background-image: url("/static/image/icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 90%;
+  background-attachment: fixed;
+  margin: 3px 10px;
+  padding: 10px 20px;
+}
+.tem-img{
+  margin: 3px 200px;
+  padding: 100px 100px;
+  background-image: url("/static/image/temp.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  <!-- background-attachment: fixed; -->
+  background-position: center;
+}
+
+.container{
+width:85%;
+}
+{% endblock css %}
+
+
+{% block body %}
+{% load humanize %}
+{% load get_dict %}
+
+<!-- Posts are shown here -->
+<h3 class="pb-4 mb-4 fst-bold border-bottom">
+  post
+</h3>
+<div class="my-cont  ">
+
+  <div class="col-md-12">
+    <div class="tem-img">
+      <article class="blog-post  " >
+        <h2 class="blog-post-title mb-1">{{post.title}}</h2>
+        <p class="blog-post-meta">{{post.timeStamp}} / <b>{{post.author}}</b></p>
+        
+        <p>{{post.content}}</p>
+      </article>
+    </div>
+  </div>
+</div>
+
+
+<div class="container ">
+  <h4>Comments ({{comments.count}})</h4>
+
+  <!-- Posting of comment form -->
+
+  {% if user.is_authenticated %}
+  <div class="container ">
+    <form action="/blog/postComment" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="comment" class="form-label">Comment here</label>
+        <input type="text" class="form-control" name="comment" id="comment" placeholder="Enter comment here"
+          aria-describedby="comment">
+      </div>
+      <input type="hidden" name="postslno" value="{{post.slno}}">
+      <input type="hidden" name="parentslno" value="">
+      <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  {% else %}
+  <p>Please login to post comment</p>
+  {% endif %}
+
+  <!-- Posted commentes shown here -->
+
+  {% for comment  in comments  %}
+  <div class="row my-1 my-4">
+    <div class="col-md-1 ">
+      <img src="/static/image/user.svg" class="w-100 px-3 py-1" alt="img not found">
+    </div>
+    <div class="col-md-11 ">
+      <b>{{comment.user.username}}</b> / {{comment.timeStamp|naturaltime}}
+      <div>
+        {{comment.comment}}
+      </div>
+      <br>
+
+      <!--Reply section starts-->
+      <!-- Reply button starts here-->
+
+      <div class="reply mx-0">
+        {% if user.is_authenticated %}
+        <p>
+          <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse"
+            data-bs-target="#Reply{{comment.slno}}" aria-expanded="false" aria-controls="Reply{{comment.slno}}">
+            Reply
+          </button>
+        </p>
+
+
+        <!-- Reply button ends here-->
+
+        <!--Reply comment form starts here-->
+
+        <div class="collapse " id="Reply{{comment.slno}}">
+          <div class="card card-body  ">
+            <div class="container">
+              <form action="/blog/postComment" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="reply" class="form-label">Reply as {{user}}</label>
+                  <input type="text" class="form-control" name="comment" id="reply" placeholder="Enter your reply"
+                    aria-describedby="comment">
+                  <input type="hidden" name="parentslno" value="{{comment.slno}}">
+                </div>
+                <input type="hidden" name="postslno" value="{{post.slno}}">
+                <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+
+        <!--Reply comment form ends here-->
+      </div>
+      <!--Reply section ending-->
+      <!--Reply display starts -->
+      
+        {% for reply in repDict|get_dict:comment.slno %}
+        <div class="replies">
+          {{reply.comment}}
+      </div>
+      {% endfor %}
+      <!--Reply display ends -->
+
+    </div>
+  </div>
+  <!--Comment section ends here-->
+  {% endfor %}
+</div>
+<br>
+<!--Back button start-->
+<div class="container my-3">
+  <a href="/blog" role="button" class="btn btn-primary">Goback</a>
+</div>
+<!--Back button end-->
+{% endblock body %}
