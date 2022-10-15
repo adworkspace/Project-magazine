@@ -18,7 +18,7 @@ from django.urls import path,include
 
 admin.site.site_header="Project Admin Interface"
 admin.site.site_title="Project Admin"
-admin.site.index_title="Project Contro Panel"
+admin.site.index_title="Project Control Panel"
 
 urlpatterns = [
     path('admin/', admin.site.urls),

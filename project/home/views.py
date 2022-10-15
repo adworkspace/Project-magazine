@@ -109,3 +109,8 @@ def handleLogout(request):
     messages.success(request,"Successfully Logged Out!!!")
     return redirect("home")
 
+
+
+def profile(request):
+    return render(request,"home/profile.html")
+
