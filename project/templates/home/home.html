@@ -11,42 +11,44 @@
 
 
 {% block css %}
-.container{
-    width: 85%;
+.contain{
+background-color:#edf0ee;
+padding: 25px;
+width: 85%;
+height:100%;
+margin:auto;
 }
+.oneline {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+    
+}
+.card{
+    box-shadow:2px 2px 5px grey;
+}
+
+
 {% endblock css %}
 
 {% block body %}
-<div class="container my-2">
-</div>
-<div class="container">
-    <img src="/static/image/icon.PNG" class="w-100" alt="">
-     
-</div>
-<div class="container my-5">
-    <h2>Popular Posts</h2>
-    {% for post in allPosts %}
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">Author: {{post.author}}</strong>
-                    <h3 class="mb-0"><a class="text-dark" href="/blog/{{post.slug}}">{{post.title}}</a></h3>
-                    <div class="mb-1 text-muted">{{post.datetime}}</div>
-                    {% comment %} <p class="card-text mb-auto">{{post.content|truncatechars:200}}</p> {% endcomment %}
-                    <div class="my-3">
-                        <a href="/blog" role="button" class="btn btn-primary">Start reading</a>
-                    </div>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="200" xmlns="http://www.w3.org/2000/svg"
-                        role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                        focusable="false">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef"
-                            dy=".3em">Thumbnail</text>
-                    </svg>
 
-                </div>
-            </div>
-            {% endfor %}
+<div class="contain my-5">
+    <h2>Recent Posts</h2>
+    <div class="oneline">
+        <!-- for loop starts here -->
+        {% for post in allPosts %}
+                <div class="card " >
+                    <img src="/{{post.postImage}}" class="card-img-top" alt="no-image">
+                    <div class="card-body">
+                        <h4 class="card-title">{{post.title}}</h4>
+                        <h5>Author: {{post.author}}</h5>
+                        <p class="card-text">{{post.content|truncatechars:200}}</p>
+                        <a href="/blog" class="btn btn-primary">Start Reading</a>
+                    </div>
+                </div>       
+         {% endfor %}
+            
+        </div>
 </div>
-    {% endblock body %}
+{% endblock body %}

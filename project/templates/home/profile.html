@@ -1,1 +1,41 @@
 {% extends 'base.html' %}
+
+{% block title %}Profile{% endblock title %}
+
+{%block css%}
+.cont{
+    width: 70%;
+    margin:auto;
+    margin-top:2px;
+    padding: 5%;
+    box-shadow: 2px 2px 6px grey;
+}
+#profile img{
+    float: left;
+    margin: 0px 30px;
+    border-radius: 50%;
+}
+
+{%endblock css%}
+
+{% block body %}
+<div class="cont">
+    <center>
+        <div id="profile">
+            <img src="/static/image/homepic-1.jpg" height="100px" width="100px" alt="Profile Pic">
+            <p>Name: <b>Testname</b><br>
+                Branch: <b>TestBranch</b><br>
+                College: <b>TestCollege</b><br>
+                Bio: <b>TestBio</b><br>
+            </p>
+        </div>
+    </center>
+    <hr>
+
+
+
+
+</div>
+
+
+{% endblock body %}

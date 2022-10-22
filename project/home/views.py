@@ -7,7 +7,7 @@ from blog.models import Post
 
 # Create your views here.
 def home(request):
-    allPosts = Post.objects.all()
+    allPosts = Post.objects.all().order_by("-timeStamp")
     context={'allPosts':allPosts}
     return render(request,'home/home.html',context)
 

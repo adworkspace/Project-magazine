@@ -8,7 +8,24 @@
 
 {% block css %}
 .container{
-    width:85%;
+width:60%;
+}
+
+.about img{
+
+float:right;
+margin: 2px 86px;
+
+}
+.about{
+margin-bottom:100px;
+}
+
+#thanks img{
+margin: 2px 30px;
+}
+#thanks div{
+display: inline-block;
 }
 {% endblock css %}
 
@@ -20,11 +37,92 @@
 
 {% block body %}
 <div class="container my-3">
-<h3>About History</h3>
-<p>The World Wide Web (WWW) was created in 1989 by the British CERN computer scientist Tim Berners-Lee.[1][2] On 30 April 1993, CERN announced that the World Wide Web would be free to use for anyone, contributing to the immense growth of the Web.[3] Before the introduction of the Hypertext Transfer Protocol (HTTP), other protocols such as File Transfer Protocol and the gopher protocol were used to retrieve individual files from a server. These protocols offer a simple directory structure which the user navigates and where they choose files to download. Documents were most often presented as plain text files without formatting or were encoded in word processor formats.</p>
-<h3>Overview</h3>
-<p>Websites can be used in various fashions: a personal website, a corporate website for a company, a government website, an organization website, etc. Websites can be the work of an individual, a business or other organization, and are typically dedicated to a particular topic or purpose. Any website can contain a hyperlink to any other website, so the distinction between individual sites, as perceived by the user, can be blurred.</p>
-<h3>Dynamic Website</h3>
-<p>A dynamic website is one that changes or customizes itself frequently and automatically. Server-side dynamic pages are generated "on the fly" by computer code that produces the HTML (CSS are responsible for appearance and thus, are static files). There are a wide range of software systems, such as CGI, Java Servlets and Java Server Pages (JSP), Active Server Pages and ColdFusion (CFML) that are available to generate dynamic web systems and dynamic sites. Various web application frameworks and web template systems are available for general-use programming languages like Perl, PHP, Python and Ruby to make it faster and easier to create complex dynamic websites.</p>
+    <div class="about">
+        <h3>Our vision</h3>
+        <img src="/static/image/building.jpg" height="200px" width="200px" alt="not found">
+        <p>The broad vision to make this website to publish valuable Articles,Paintings,quotes,images and many more
+            written
+            by our young generation students studying in institutions. This website will help them to expand and
+            share
+            their
+            talent, skills and hobby to share among a huge community. They can publish their valuable content
+            digitally
+            and
+            connects with other students having favourable mindset. </p>
+    </div>
+    <div>
+        <h2>Contributers</h2><hr><br>
+        <div class="about">
+            <h3>Miner-0</h3><br>
+            <img src="/static/image/about/adarsh.jpg" width="200px" height="200px" alt="Not found">
+            <p>Name: <b>Adarsh Dash</b><br><br>
+                Branch: <b>CSIT</b><br><br>
+                Group: <b>MINISQUAD</b><br><br>
+                Year: <b>@2022</b><br>
+                College: <b>GITA AutonomousCollege</b><br><br>
+            </p>
+        </div>
+        <div class="about">
+            <h3>Miner-1</h3><br>
+            <img src="/static/image/about/prof.jpg" width="200px" height="200px" alt="Not found">
+            <p>Name: <b>Abhijeet Parida</b><br><br>
+                Branch: <b>CSIT</b><br><br>
+                Group: <b>MINISQUAD</b><br><br>
+                Year: <b>@2022</b><br>
+                College: <b>GITA AutonomousCollege</b><br><br>
+            </p>
+        </div>
+        <div class="about">
+            <h3>Miner-2</h3><br>
+            <img src="/static/image/about/prof.jpg" width="200px" height="200px" alt="Not found">
+            <p>Name: <b>Ankit Ray</b><br><br>
+                Branch: <b>CSIT</b><br><br>
+                Group: <b>MINISQUAD</b><br><br>
+                Year: <b>@2022</b><br>
+                College: <b>GITA AutonomousCollege</b><br><br>
+            </p>
+        </div>
+        <div class="about">
+            <h3>Miner-3</h3><br>
+            <img src="/static/image/about/jyoti.jpeg" width="200px" height="200px" alt="Not found">
+            <p>Name: <b>Jyotiranjan Panda</b><br><br>
+                Branch: <b>CSIT</b><br><br>
+                Group: <b>MINISQUAD</b><br><br>
+                Year: <b>@2022</b><br>
+                College: <b>GITA AutonomousCollege</b><br><br>
+            </p>
+        </div>
+        <div class="about">
+            <h3>Miner-4</h3><br>
+            <img src="/static/image/about/soumya.jpeg" width="200px" height="200px" alt="Not found">
+            <p>Name: <b>Soumyaranjan Barik</b><br><br>
+                Branch: <b>CSIT</b><br><br>
+                Group: <b>MINISQUAD</b><br><br>
+                Year: <b>@2022</b><br>
+                College: <b>GITA AutonomousCollege</b><br><br>
+            </p>
+        </div>
+    </div>
+
+    <!-- special Thanks -->
+
+    <div>
+        <h3>Special Thanks to </h3>
+        <hr><br><br>
+        <div id="thanks">
+            <center>
+                <div>
+                    <img src="/static/image/about/prof.jpg" alt="not found" width="225px" height="225px">
+                    <p>Name: <b>Suvendu sir</b></p>
+                </div>
+                <div>
+                    <img src="/static/image/about/prof.jpg" alt="not found" width="225px" height="225px">
+                    <p>Name: <b>Dr. Debasish Das</b></p>
+                </div>
+            </center>
+        </div>
+    </div>
+
+
 </div>
 {% endblock body %}
