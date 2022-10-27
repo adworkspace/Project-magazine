@@ -3,12 +3,13 @@ from home.models import Contact
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from blog.models import Post
+from blog.models import Post,Paint
 
 # Create your views here.
 def home(request):
-    allPosts = Post.objects.all()
-    context={'allPosts':allPosts}
+    allPosts = Post.objects.all().order_by("-timeStamp")
+    allPaints=Paint.objects.all().order_by("-timeStamp")
+    context={'allPosts':allPosts,'allPaints':allPaints}
     return render(request,'home/home.html',context)
 
 
@@ -113,4 +114,6 @@ def handleLogout(request):
 
 def profile(request):
     return render(request,"home/profile.html")
+
+
 
