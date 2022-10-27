@@ -19,13 +19,13 @@ height:100%;
 margin:auto;
 }
 .oneline {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 20px;
-    
+display: grid;
+grid-template-columns: auto auto auto;
+grid-gap: 20px;
+
 }
 .card{
-    box-shadow:2px 2px 5px grey;
+box-shadow:2px 2px 5px grey;
 }
 
 
@@ -38,17 +38,33 @@ margin:auto;
     <div class="oneline">
         <!-- for loop starts here -->
         {% for post in allPosts %}
-                <div class="card " >
-                    <img src="/{{post.postImage}}" class="card-img-top" alt="no-image">
-                    <div class="card-body">
-                        <h4 class="card-title">{{post.title}}</h4>
-                        <h5>Author: {{post.author}}</h5>
-                        <p class="card-text">{{post.content|truncatechars:200}}</p>
-                        <a href="/blog" class="btn btn-primary">Start Reading</a>
-                    </div>
-                </div>       
-         {% endfor %}
-            
+        <div class="card ">
+            <img src="/{{post.postImage}}" class="card-img-top" alt="no-image">
+            <div class="card-body">
+                <h4 class="card-title">{{post.title}}</h4>
+                <h5>Author: {{post.author}}</h5>
+                <p class="card-text">{{post.content|truncatechars:200}}</p>
+                <a href="/blog/{{post.slug}}" class="btn btn-primary">Start Reading</a>
+            </div>
         </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="contain my-5">
+    <h2>Recent Paintings</h2>
+    <div class="oneline">
+        <!-- for loop starts here -->
+        {% for painting in allPaints %}
+        <div class="card ">
+            <img src="/{{painting.painting}}" class="card-img-top" alt="no-image">
+            <div class="card-body">
+                <h4 class="card-title">{{painting.paint_title}}</h4>
+                <h5>Author: {{painting.painter}}</h5>
+             
+                <a href="" class="btn btn-primary">View Painting</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock body %}

@@ -25,6 +25,7 @@ class Post(models.Model):
 
 class Paint(models.Model):
     painter=models.CharField(max_length=25)
+    branch=models.CharField(max_length=5)
     paint_title=models.CharField(max_length=30)
     painting=models.ImageField(upload_to='static/image/painting')
     slug=models.CharField(max_length=30)
